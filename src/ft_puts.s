@@ -14,7 +14,7 @@
 %include "syscall.mac"
 ; TODO : look at error returned, and turn it into EOF
 section .data
-nullstr		db	"(null)"
+nullstr		db	"(null)", 0
 
 section .text
 global ft_puts
@@ -23,7 +23,7 @@ ft_puts:
 	mov			rsi, rdi
 	cmp			rsi, 0
 	jnz			continue
-	mov			rsi, nullstr
+	lea			rsi, [rel nullstr]
 	continue:
 	mov			rdi, STDOUT
 	mov			rdx, 0
