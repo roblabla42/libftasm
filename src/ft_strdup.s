@@ -20,6 +20,7 @@ ft_strdup:
 	mov		rbx, rdi ; backup arg, rbx is callee-saved
 	call	ft_strlen
 	mov		r12, rax ; backup len, r12 is callee-saved
+	inc		r12
 	mov		rdi, rax
 	call	malloc
 	mov		rdi, rax ; dest
