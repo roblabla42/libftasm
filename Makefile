@@ -6,7 +6,7 @@
 #    By: roblabla </var/spool/mail/roblabla>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/14 19:06:21 by roblabla          #+#    #+#              #
-#    Updated: 2015/02/16 13:57:01 by roblabla         ###   ########.fr        #
+#    Updated: 2015/03/12 13:50:40 by roblabla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,11 +44,16 @@ else
 NFLAGS += -fmacho64 -DOSX --prefix _
 endif
 
+CFLAGS += -Wall -Wextra -Werror -Iinclude/
+
 obj/%.o: src/%.s
 	@$(MKDIR) -p $(dir $@)
 	$(NASM) $(NFLAGS) -o $@ $<
 
 all: $(NAME)
+
+test.out: $(NAME) main.o
+	$(CC) -Iinclude/ main.o -o $@ -L. -lfts 
 
 $(NAME): $(OBJS)
 	$(AR) -rcs $(NAME) $?
