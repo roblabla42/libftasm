@@ -6,7 +6,7 @@
 /*   By: roblabla </var/spool/mail/roblabla>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/11 16:51:09 by roblabla          #+#    #+#             */
-/*   Updated: 2015/03/11 16:54:55 by roblabla         ###   ########.fr       */
+/*   Updated: 2015/03/12 15:14:28 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 char	*ft_strdup(const char *s1);
 void	*ft_cat(int fd);
+int		ft_max(int x, int y);
 #endif

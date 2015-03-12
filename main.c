@@ -6,7 +6,7 @@
 /*   By: roblabla </var/spool/mail/roblabla>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/11 16:55:10 by roblabla          #+#    #+#             */
-/*   Updated: 2015/03/12 13:19:33 by roblabla         ###   ########.fr       */
+/*   Updated: 2015/03/12 15:16:32 by rlambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,23 @@ void	test_strdup()
 	test = "hello";
 	test2 = ft_strdup(test);
 	if (test == test2 || strcmp(test, test2) != 0)
-		ft_puts("FAIL : strdup");
+	{
+		ft_puts("FAIL : strdup\n");
+		ft_puts(test);
+		ft_puts("\n");
+		ft_puts(test2);
+		ft_puts("\n");
+	}
+}
+
+void	test_max()
+{
+	ft_puts("Testing max\n");
+	if (ft_max(0, 0) != 0 || ft_max(-12, -5) != -5 || ft_max(5, 12) != 12 ||
+					ft_max(-52, 12) != 12)
+	{
+		ft_puts("FAIL : max");
+	}
 }
 
 void	test_cat()
@@ -160,6 +176,7 @@ int		main(void)
 	test_memset();
 	test_memcpy();
 	test_strdup();
+	test_max();
 	test_cat();
 	return (0);
 }
