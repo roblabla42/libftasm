@@ -1,0 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    syscall.inc                                        :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: roblabla </var/spool/mail/roblabla>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2015/02/16 13:14:37 by roblabla          #+#    #+#              #
+#    Updated: 2015/02/16 13:44:08 by roblabla         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+%ifdef		OSX
+%include	"syscall_osx.mac"
+%endif
+%ifdef		LINUX
+%include	"syscall_linux.mac"
+%endif
