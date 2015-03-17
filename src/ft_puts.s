@@ -15,6 +15,7 @@
 ; TODO : look at error returned, and turn it into EOF
 section .data
 nullstr		db	"(null)", 0
+endlstr		db	10
 
 section .text
 global ft_puts
@@ -33,6 +34,16 @@ ft_puts:
 	end_loop:
 	cmp			[rsi + rdx], byte 0
 	jne			begin_loop
-	mov			rax, SYSCALL_UNIX(WRITE)
+	mov			rax, WRITE
 	syscall
+	SYSERR		error
+	mov			r11, rax
+	lea			rsi, [rel endlstr]
+	mov			rdx, 1
+	mov			rax, WRITE
+	syscall
+	SYSERR		error
+	ret
+	error:
+	neg			rax	; RAX contains error code. Negate it.
 	ret

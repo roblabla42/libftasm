@@ -24,15 +24,17 @@ ft_cat:
 	loop_write:
 	mov		rdi, STDOUT
 	mov		rdx, rax					; Only write as much as what was read
-	mov		rax, SYSCALL_UNIX(WRITE)
+	mov		rax, WRITE
 	syscall
 	loop_read:
 	mov		rdi, r8
 	mov		rdx, 4096					; Size of buffer
-	mov		rax, SYSCALL_UNIX(READ)
+	mov		rax, READ
 	syscall								; registers preserved (except rcx, r11)
+	SYSERR	return
 	cmp		rax, 0
 	jg		loop_write
+	return:
 	mov		rsp, rbp
 	pop		rbp
 	ret
